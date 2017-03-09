@@ -1,0 +1,297 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+		   <link href='http://fonts.googleapis.com/css?family=Walter+Turncoat' rel='stylesheet' type='text/css'>
+		   
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/beige.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background="images/back.jpg">
+                <img style="border:none;  box-shadow: none; background: none;" src="images/dockericon.png" alt=""/>
+                <p>Leonchik Vladislav</p></section>
+				<section data-background="images/back.jpg"><h1>What is Docker?</h1>
+                 <aside class="notes">
+        Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly. With Docker, you can manage your infrastructure in the same ways you manage your applications. By taking advantage of Docker’s methodologies for shipping, testing, and deploying code quickly, you can significantly reduce the delay between writing code and running it in production.
+                 </aside>
+                </section>
+
+				<section data-background="images/back3.jpg">
+                    <h2>What is the Docker platform?</h2>
+                    <li>Encapsulate your applications (and supporting components) into Docker containers</li>
+                    <li>Distribute and ship those containers to your teams for further development and testing</li>
+                    <li>Deploy those applications to your production environment, whether it is in a local data center or the Cloud</li>
+                    <aside class="notes">
+      Docker provides the ability to package and run an application in a loosely isolated environment called a container. The isolation and security allow you to run many containers simultaneously on a given host. Because of the lightweight nature of containers, which run without the extra load of a hypervisor, you can run more containers on a given hardware combination than if you were using virtual machines. </aside>
+                </section>
+
+				<section data-background="images/back.jpg">
+                <h3>What is Docker Engine?</h3>
+                <img src="images/engine.png"/>
+                <aside class="notes" data-markdown="">
+                Docker Engine is a client-server application with these major components:
+                
+                1.A server which is a type of long-running program called a daemon process. 
+
+                2.A REST API which specifies interfaces that programs can use to talk to the daemon and instruct it what to do.
+
+                3.A command line interface (CLI) client.
+
+                The CLI uses the Docker REST API to control or interact with the Docker daemon through scripting or direct CLI commands. Many other Docker applications use the underlying API and CLI.
+                The daemon creates and manages Docker objects, such as images, containers, networks, and data volumes.
+                </aside>
+                </section>
+
+                <section data-background="images/back.jpg" style="text-align: left;">
+                <h2 style="text-align: center;">What can I use Docker for?</h2>
+                <li >Fast, consistent delivery of your applications</li>
+                <li >Responsive deployment and scaling</li>
+                <li >Running more workloads on the same hardware</li>
+                <aside class="notes" data-markdown="">
+                    1.Docker can streamline the development lifecycle by allowing developers to work in standardized environments using local containers which provide your applications and services. You can also integrate Docker into your continuous integration and continuous deployment (CI/CD) workflow.
+Consider the following example scenario. Your developers write code locally and share their work with their colleagues using Docker containers. They can use Docker to push their applications into a test environment and execute automated and manual tests. When developers find problems, they can fix them in the development environment and redeploy them to the test environment for testing. When testing is complete, getting the fix to the customer is as simple as pushing the updated image to the production environment.
+
+                    2.Docker’s container-based platform allows for highly portable workloads. Docker containers can run on a developer’s local host, on physical or virtual machines in a data center, in the Cloud, or in a mixture of environments.
+Docker’s portability and lightweight nature also make it easy to dynamically manage workloads, scaling up or tearing down applications and services as business needs dictate, in near real time.
+
+                    3.Docker is lightweight and fast. It provides a viable, cost-effective alternative to hypervisor-based virtual machines, allowing you to use more of your compute capacity to achieve your business goals. This is useful in high density environments and for small and medium deployments where you need to do more with fewer resources.
+             </aside>
+                </section>
+
+
+                <section data-background="images/back.jpg">
+                 <h2>What is Docker’s architecture?</h2>
+                 <img src="images/architecture.svg" style="border:none;  box-shadow: none; background: none;" alt="">
+                <aside class="notes" data-markdown="">
+Docker uses a client-server architecture. The Docker client talks to the Docker daemon, which does the heavy lifting of building, running, and distributing your Docker containers. The Docker client and daemon can run on the same system, or you can connect a Docker client to a remote Docker daemon. The Docker client and daemon communicate using a REST API, over UNIX sockets or a network interface.
+#The Docker daemon
+
+The Docker daemon runs on a host machine. The user uses the Docker client to interact with the daemon.
+#The Docker client
+
+The Docker client, in the form of the docker binary, is the primary user interface to Docker. It accepts commands and configuration flags from the user and communicates with a Docker daemon. One client can even communicate with multiple unrelated daemons.
+#Inside Docker
+
+To understand Docker’s internals, you need to know about images, registries, and containers.
+#DOCKER IMAGES
+
+A Docker image is a read-only template with instructions for creating a Docker container. For example, an image might contain an Ubuntu operating system with Apache web server and your web application installed. You can build or update images from scratch or download and use images created by others. An image may be based on, or may extend, one or more other images. A docker image is described in text file called a Dockerfile, which has a simple, well-defined syntax. For more details about images, see How does a Docker image work?.
+Docker images are the build component of Docker.
+#DOCKER CONTAINERS
+
+A Docker container is a runnable instance of a Docker image. You can run, start, stop, move, or delete a container using Docker API or CLI commands. When you run a container, you can provide configuration metadata such as networking information or environment variables. Each container is an isolated and secure application platform, but can be given access to resources running in a different host or container, as well as persistent storage or databases. For more details about containers, see How does a container work?.
+Docker containers are the run component of Docker.
+#DOCKER REGISTRIES
+
+A docker registry is a library of images. A registry can be public or private, and can be on the same server as the Docker daemon or Docker client, or on a totally separate server. For more details about registries, see How does a Docker registry work?
+Docker registries are the distribution component of Docker.
+#DOCKER SERVICES
+
+A Docker service allows a swarm of Docker nodes to work together, running a defined number of instances of a replica task, which is itself a Docker image. You can specify the number of concurrent replica tasks to run, and the swarm manager ensures that the load is spread evenly across the worker nodes. To the consumer, the Docker service appears to be a single application. Docker Engine supports swarm mode in Docker 1.12 and higher.
+Docker services are the scalability component of Docker.
+                </aside>
+                </section>
+
+                <section data-background="images/back.jpg">
+                <h1>How does a Docker image work?</h1>
+                
+                
+                <aside class="notes" data-markdown="">
+                Docker images are read-only templates from which Docker containers are instantiated. Each image consists of a series of layers. Docker uses union file systems to combine these layers into a single image. Union file systems allow files and directories of separate file systems, known as branches, to be transparently overlaid, forming a single coherent file system.
+
+                
+                These layers are one of the reasons Docker is so lightweight. When you change a Docker image, such as when you update an application to a new version, a new layer is built and replaces only the layer it updates. The other layers remain intact. To distribute the update, you only need to transfer the updated layer. Layering speeds up distribution of Docker images. Docker determines which layers need to be updated at runtime.
+
+                
+                An image is defined in a Dockerfile. Every image starts from a base image, such as ubuntu, a base Ubuntu image, or fedora, a base Fedora image. You can also use images of your own as the basis for a new image, for example if you have a base Apache image you could use this as the base of all your web application images. The base image is defined using the FROM keyword in the dockerfile.
+                </aside>
+                </section>  
+                
+                <section data-background="images/back.jpg">
+                <pre contenteditable"><code style="width:120%">
+FROM      ubuntu
+LABEL Description="Img for foobar executetable" Vendor="ACME Products" Version="1.0"
+RUN apt-get update && apt-get install -y inotify-tools nginx apache2 openssh-server
+ADD hom* /mydir/  
+ENV myCat fluffy
+CMD echo "This is a test." 
+                </code></pre>
+                <aside class="notes" data-markdown="">
+                The docker image is built from the base image using a simple, descriptive set of steps we call instructions, which are stored in a Dockerfile. Each instruction creates a new layer in the image. Some examples of Dockerfile instructions are:
+#Specify the base image (FROM)
+#Specify image metadata (LABEL)
+#Run a command (RUN)
+#Add a file or directory (ADD)
+#Create an environment variable (ENV)
+#What process to run when launching a container from this image (CMD)
+#Docker reads this Dockerfile when you request a build of an image, executes the instructions, and returns the image.
+                </aside>
+                </section>
+                
+                <section data-background="images/back.jpg">
+                <h2>How does a Docker registry work?</h2>
+                <img src="images/registry.png">
+                <aside class="notes" data-markdown="">
+A Docker registry stores Docker images. After you build a Docker image, you can push it to a public registry such as Docker Hub or to a private registry running behind your firewall. You can also search for existing images and pull them from the registry to a host.
+
+
+Docker Hub is a public Docker registry which serves a huge collection of existing images and allows you to contribute your own. For more information, go to Docker Registry and Docker Trusted Registry.
+
+
+Docker store allows you to buy and sell Docker images. For instance, you can buy a Docker image containing an application or service from the software vendor, and use the image to deploy the application into your testing, staging, and production environments, and upgrade the application by pulling the new version of the image and redeploying the containers. Docker Store is currently in private beta.
+                </aside>
+                </section>
+                
+                <section data-background="images/back.jpg">
+                <h1>How does a container work?</h1>
+                <aside class="notes" data-markdown="">
+                A container uses the host machine’s Linux kernel, and consists of any extra files you add when the image is created, along with metadata associated with the container at creation or when the container is started. Each container is built from an image. The image defines the container’s contents, which process to run when the container is launched, and a variety of other configuration details. The Docker image is read-only. When Docker runs a container from an image, it adds a read-write layer on top of the image (using a UnionFS as we saw earlier) in which your application runs.
+                </aside>
+                </section>   
+                <section data-background="images/back.jpg">
+                <h3>WHAT HAPPENS WHEN YOU RUN A CONTAINER?</h3>
+                <pre contenteditable"><code>docker run -i -t ubuntu /bin/bash</code></pre>
+                <ol>
+                <li class="fragment">Pulls the ubuntu image</li>
+                <li class="fragment">Creates a new container</li>
+                <li class="fragment">Allocates a filesystem and mounts a read-write layer</li>
+                <li class="fragment">Allocates a network / bridge interface</li>
+                <li class="fragment">Sets up an IP address:</li>
+                <li class="fragment">Executes a process that you specify</li>
+                <li class="fragment">Captures and provides application output</li>
+                </ol>
+                <aside class="notes" data-markdown="">
+                #1.Docker Engine checks for the presence of the ubuntu image. If the image already exists locally, Docker Engine uses it for the new container. Otherwise, then Docker Engine pulls it from Docker Hub.
+                
+                #2. Docker uses the image to create a container
+                
+                #3. The container is created in the file system and a read-write layer is added to the image.
+                
+                #4. Creates a network interface that allows the Docker container to talk to the local host.
+                
+                #5. Finds and attaches an available IP address from a pool.
+                
+                #6. Executes the /bin/bash executable.
+                
+                #7. Connects and logs standard input, outputs and errors for you to see how your application is running, because you requested interactive mode.
+                
+                Your container is now running. You can manage and interact with it, use the services and applications it provides, and eventually stop and remove it.
+                </aside>
+                </section>  
+                
+                   
+                
+                
+                 
+
+                <section data-background="images/back.jpg">
+                <h2>Docker vs VM</h2>
+                <img src="images/dockervsvm.jpg">
+                <aside class="notes" data-markdown="">
+                #Faster startup time. A containerized application usually starts in a couple of seconds. Virtual machines could take a couple of minutes.
+                #Better resource distribution. Containers use up only as many system resources as they need at a given time. Virtual machines usually require some resources to be permanently allocated before the virtual machine starts. For this reason, virtual machines tie up resources on the host, even if they are not actually using them. Containers allow host resources to be distributed in an optimal way.
+#Direct hardware access. Applications running inside virtual machines generally cannot access hardware like graphics cards on the host in order to speed processing. Containerized applications can. (And companies like Nvidia are already taking advantage of this functionality.)
+#Less redundancy. With virtual machines, you have to install an entire guest operating system, which duplicates a lot of the components already running on your host server. Containers don't require this.
+                </aside>
+                </section>
+
+                </section>
+                
+                <section data-background="images/back.jpg">
+                 <ol>
+                  <h1>Disadvantages</h1>
+                <li class="fragment">Not right for all tasks</li>
+                <li class="fragment">Grappling with dependencies</li>
+                <li class="fragment">Weaker isolation</li>
+                <li class="fragment">Limited tools</li>
+                
+                </ol>
+                <aside class="notes" data-markdown="">
+  #1. provide versatility, but are certainly not a universal replacement for every existing virtual machine (VM) deployment. Just as some legacy applications were better suited to physical deployments in the early days of virtualization, some applications are not appropriate for container virtualization.
+
+For example, containers are ideally suited to microservice-type application development -- an approach that allows more complex applications to be configured from basic building blocks, where each building block is deployed in a container and the constituent containers are linked together to form the cohesive application. The application's functionality can then be scaled by deploying more containers of the appropriate building blocks rather than entire new iterations of the full application.
+
+By comparison, some applications simply need to be monolithic -- they're designed that way, and benefits like scalability and fast deployment don't readily apply. In these cases, containers just constrain the workload. The best approach is often to experiment and see which existing applications can benefit from containerization. New application development paradigms will likely benefit from containerization. Applications that cannot readily be containerized can still run as fully-functional VMs atop a conventional hypervisor. One IT enterprise architect from a major insurance provider noted the pause. "Containers are interesting, but our software team would need to do a lot of catch-up to really use containers right."
+                
+                #2. Common VMs are extremely self-contained and each VM includes a unique operating system (OS), drivers and application components. VMs can also be migrated to any other system as long as a suitable hypervisor is available. By comparison, containers run on top of a physical OS, sharing much of the underlying OS kernel along with many libraries and binaries. Placing dependencies on containers that can limit portability between servers. For example, Linux containers under Docker cannot run on current versions of Windows Server.
+                
+                #3. Hypervisor-based VMs provide a high level of isolation from one another because the system's hardware resources are all virtualized and presented to the VMs through the hypervisor. This means a bug, virus or intrusion could compromise one VM, but not carry over to other VMs.
+
+Containers are weaker because they share an OS kernel and components and already have a deep level of authorization (usually root access in Linux environments) in order to run in the first place. As a consequence, flaws and attacks have a much greater potential to carry down into an underlying OS and over into other containers -- potentially propagating malicious activity far beyond the original event.
+                #4. The kind of tools needed to monitor and manage containers are still lacking in the industry. This is not a new phenomenon. The early days of hypervisor-based virtualization were marked by a shortage of suitable tools. And just as capable VM monitoring and management tools are now readily available, new tools are starting to appear for container management. These include Google's open source Docker management tools Kubernetes, DockerUI to replace Linux command line functions with a web-based front end, Logspout to route container logs to a central location and so on.
+
+                </aside>
+                </section>  
+                <section data-background="images/back.jpg"><h1>QUESTIONS</h1></h1></section>
+			</div>
+		</div>
+        
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+	<script>
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/highlight/highlight.js', async: true, condition: function () {
+                return !!document.querySelector('pre code');
+            }, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'plugin/zoom-js/zoom.js', async: true},
+            {src: 'plugin/notes/notes.js', async: true}
+        ]
+    });
+    Reveal.addEventListener( 'startsnow', function() {
+        // TODO: Sprinkle magic
+    }, false );
+    Reveal.addEventListener( 'stopsnow', function() {
+        // TODO: Sprinkle magic
+    }, false );
+</script>
+	</body>
+</html>
